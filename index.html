@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <script>
+      (function () {
+        try {
+          var savedTheme = localStorage.getItem('theme');
+          var isDark = savedTheme ? savedTheme === 'dark' : true;
+          var root = document.documentElement;
+          var body = document.body;
+
+          if (isDark) {
+            root.classList.add('dark');
+            root.classList.remove('light');
+            body.style.backgroundColor = 'black';
+            body.style.color = 'white';
+          } else {
+            root.classList.add('light');
+            root.classList.remove('dark');
+            body.style.backgroundColor = 'white';
+            body.style.color = 'black';
+          }
+        } catch (e) {
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
