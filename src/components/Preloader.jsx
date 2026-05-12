@@ -8,7 +8,7 @@ const Preloader = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed inset-0 bg-black z-[999] flex items-center justify-center"
+      className="fixed inset-0 bg-theme-dark z-[999] flex items-center justify-center"
     >
       <div className="relative">
         <motion.div

@@ -33,7 +33,7 @@ export const WipeTransition = ({ children }) => {
         animate={{ x: ["-100%", "50%", "100%"] }}
         exit={{ x: "100%" }}
         transition={{
-          duration: 0.5,
+          duration: 0.7,
           ease: [0.25, 0.46, 0.45, 0.94],
         }}
         style={{ backgroundColor: c1 }}
@@ -45,7 +45,7 @@ export const WipeTransition = ({ children }) => {
         animate={{ x: ["-100%", "50%", "100%"] }}
         exit={{ x: "100%" }}
         transition={{
-          duration: 0.6,
+          duration: 0.9,
           ease: [0.25, 0.46, 0.45, 0.94],
           delay: 0.05
         }}
@@ -57,7 +57,7 @@ export const WipeTransition = ({ children }) => {
         animate={{ x: ["-100%", "50%", "100%"] }}
         exit={{ x: "100%" }}
         transition={{
-          duration: 0.6,
+          duration: 0.9,
           ease: [0.25, 0.46, 0.45, 0.94],
           delay: 0.1
         }}
@@ -69,7 +69,7 @@ export const WipeTransition = ({ children }) => {
         animate={{ x: ["-100%", "50%", "100%"] }}
         exit={{ x: "100%" }}
         transition={{
-          duration: 0.6,
+          duration: 0.9,
           ease: [0.25, 0.46, 0.45, 0.94],
           delay: 0.15
         }}

@@ -1,48 +1,31 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import AnimatedSection from '../components/AnimatedSection';
 
 const Blog = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 3;
-  const totalPages = 2;
+  const totalPages = 1;
 
   const blogPosts = [
     {
       id: 1,
       title: 'How to Create a Portfolio Website',
       excerpt: 'Learn the essential steps and tools needed to build a stunning portfolio website that showcases your work effectively.',
-      date: 'Dec 19, 2023'
+      date: 'Dec 19, 2024'
     },
     {
       id: 2,
       title: 'Top 10 Web Design Trends for 2024',
       excerpt: 'Discover the latest design trends that will shape the digital landscape in the coming year.',
-      date: 'Dec 15, 2023'
+      date: 'Feb 25, 2025'
     },
     {
       id: 3,
       title: 'Responsive Design Best Practices',
       excerpt: 'Master the art of creating websites that look great on any device or screen size.',
-      date: 'Dec 10, 2023'
-    },
-    {
-      id: 4,
-      title: 'Color Theory for Web Designers',
-      excerpt: 'Understanding color psychology and how to use color effectively in your web designs.',
-      date: 'Dec 5, 2023'
-    },
-    {
-      id: 5,
-      title: 'JavaScript Frameworks Comparison',
-      excerpt: 'A comprehensive comparison of popular JavaScript frameworks to help you choose the right one.',
-      date: 'Dec 1, 2023'
-    },
-    {
-      id: 6,
-      title: 'UX Design Principles',
-      excerpt: 'Essential UX design principles every designer should know to create user-friendly interfaces.',
-      date: 'Nov 28, 2023'
+      date: 'May 10, 2025'
     }
   ];
 
@@ -60,9 +43,7 @@ const Blog = () => {
         {/* Header */}
         <AnimatedSection direction="up" delay={0.2} className="text-center mb-20 relative">
           {/* Background RESUME text */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none select-none">
-            <h1 className="text-[6rem] md:text-[8rem] lg:text-[10rem] font-bold tracking-wider text-gray-800 dark:text-gray-200">RESUME</h1>
-          </div>
+         
           <div className="relative z-10">
             <h1 className="text-5xl md:text-7xl font-bold  uppercase ">
               My <span className="text-theme-yellow">Blog</span>
@@ -85,9 +66,17 @@ const Blog = () => {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 hover:text-theme-yellow transition-colors cursor-pointer">
-                  {post.title}
-                </h3>
+                {post.id <= 3 ? (
+                  <Link to={`/blog/${post.id}`}>
+                    <h3 className="text-xl font-bold mb-3 hover:text-theme-yellow transition-colors cursor-pointer">
+                      {post.title}
+                    </h3>
+                  </Link>
+                ) : (
+                  <h3 className="text-xl font-bold mb-3 hover:text-theme-yellow transition-colors cursor-pointer">
+                    {post.title}
+                  </h3>
+                )}
                 <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
                   {post.excerpt}
                 </p>

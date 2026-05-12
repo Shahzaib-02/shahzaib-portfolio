@@ -10,10 +10,7 @@ const Contact = () => {
       <div className="container mx-auto px-4 z-10 relative py-20">
         {/* Header */}
         <AnimatedSection direction="up" delay={0.2} className="text-center mb-20 relative">
-          {/* Background RESUME text */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none select-none">
-            <h1 className="text-[6rem] md:text-[8rem] lg:text-[10rem] font-bold tracking-wider text-gray-800 dark:text-gray-200">RESUME</h1>
-          </div>
+        
           <div className="relative z-10">
             <h1 className="text-5xl md:text-7xl font-bold uppercase mb-4">
               Get in <span className="text-theme-yellow">Touch</span>
@@ -86,28 +83,28 @@ const Contact = () => {
                   <input 
                     type="text" 
                     placeholder="YOUR NAME" 
-                    className="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-800 rounded-full py-4 px-6 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-theme-yellow focus:border-theme-yellow transition-all duration-300" 
+                    className="w-full bg-white dark:bg-theme-dark border border-gray-300 dark:border-gray-800 rounded-full py-4 px-6 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-theme-yellow focus:border-theme-yellow transition-all duration-300" 
                   />
                 </div>
                 <div className="relative">
                   <input 
                     type="email" 
                     placeholder="YOUR EMAIL" 
-                    className="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-800 rounded-full py-4 px-6 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-theme-yellow focus:border-theme-yellow transition-all duration-300" 
+                    className="w-full bg-white dark:bg-theme-dark border border-gray-300 dark:border-gray-800 rounded-full py-4 px-6 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-theme-yellow focus:border-theme-yellow transition-all duration-300" 
                   />
                 </div>
                 <div className="col-span-1 md:col-span-2">
                   <input 
                     type="text" 
                     placeholder="YOUR SUBJECT" 
-                    className="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-800 rounded-full py-4 px-6 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-theme-yellow focus:border-theme-yellow transition-all duration-300" 
+                    className="w-full bg-white dark:bg-theme-dark border border-gray-300 dark:border-gray-800 rounded-full py-4 px-6 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-theme-yellow focus:border-theme-yellow transition-all duration-300" 
                   />
                 </div>
                 <div className="col-span-1 md:col-span-2">
                   <textarea 
                     placeholder="YOUR MESSAGE" 
                     rows="6" 
-                    className="w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-800 rounded-2xl py-4 px-6 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-theme-yellow focus:border-theme-yellow transition-all duration-300 resize-none"
+                    className="w-full bg-white dark:bg-theme-dark border border-gray-300 dark:border-gray-800 rounded-2xl py-4 px-6 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-theme-yellow focus:border-theme-yellow transition-all duration-300 resize-none"
                   ></textarea>
                 </div>
                 <div className="col-span-1 md:col-span-2">

@@ -1,7 +1,21 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { FaGraduationCap, FaBriefcase, FaDownload } from 'react-icons/fa';
 import AnimatedSection from '../components/AnimatedSection';
+import resumePdf from '../assets/SHAHZAIB.pdf';
 
 const About = () => {
   const [typedText, setTypedText] = useState('');
@@ -9,65 +23,55 @@ const About = () => {
   const [typedSkills, setTypedSkills] = useState({});
   const [typedExperiences, setTypedExperiences] = useState({});
   const [typedEducation, setTypedEducation] = useState({});
-  
+
   const textsToType = [
+    'MERN Stack Developer',
     'Full Stack Developer',
-    'UI/UX Designer',
     'Problem Solver',
     'Creative Thinker'
   ];
-  
+
   const skills = [
-  { name: 'HTML', percentage: 95, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-  { name: 'CSS', percentage: 90, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-  { name: 'Bootstrap', percentage: 85, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
-  { name: 'Tailwind CSS', percentage: 88, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
-  { name: 'JavaScript', percentage: 89, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  { name: 'React JS', percentage: 92, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-  { name: 'Material UI', percentage: 78, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg' },
-  { name: 'Ant Design', percentage: 83, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/antdesign/antdesign-original.svg' },
-  { name: 'Mongo DB', percentage: 75, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-  { name: 'MySQL', percentage: 80, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
-  { name: 'Express', percentage: 83, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
-  { name: 'C++', percentage: 82, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
-  { name: 'C#', percentage: 87, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg' },
-  { name: 'Java', percentage: 79, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
-  { name: 'Python', percentage: 91, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' }
-];
+    { name: 'HTML', percentage: 95, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+    { name: 'CSS', percentage: 90, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+    { name: 'Bootstrap', percentage: 85, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
+    { name: 'Tailwind CSS', percentage: 88, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+    { name: 'JavaScript', percentage: 89, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+    { name: 'React JS', percentage: 92, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+    { name: 'Material UI', percentage: 78, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg' },
+    { name: 'Ant Design', percentage: 83, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/antdesign/antdesign-original.svg' },
+    { name: 'Mongo DB', percentage: 75, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+    { name: 'MySQL', percentage: 80, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+    { name: 'Express', percentage: 83, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+    { name: 'C++', percentage: 82, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
+    { name: 'C#', percentage: 87, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg' },
+    { name: 'Java', percentage: 79, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+    { name: 'Python', percentage: 91, icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' }
+  ];
 
   const experiences = [
     {
-      year: '2021 - 2022',
-      title: 'WEB DEVELOPER - ENVATO',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      year: 'Jun 2024 - Nov 2024',  // FIXED: Title case, space between month and year
+      title: 'FRONTEND DEVELOPER - PCI Learning, Lahore',
+      description: 'Developed responsive, user-friendly web pages using HTML5, CSS3, JavaScript, and Bootstrap.'
     },
     {
-      year: '2023 - 2024',
-      title: 'UI/UX DESIGNER - THEMEFOREST',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      year: '2025 - 2025',
-      title: 'SENIOR DEVELOPER - CODECANYON',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      year: 'Jun 2025 - Dec 2025',  // FIXED: Title case, space between month and year
+      title: 'MERN STACK DEVELOPER - Octet Solutions, Lahore',
+      description: 'Completed hands-on training in full-stack MERN development, covering both frontend and backend application workflows.'
     }
   ];
 
   const education = [
     {
-      year: '2009 - 2013',
-      title: 'ENGINEER DEGREE - OXFORD UNIVERSITY',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      year: 'Mar 2019 - May 2021',  // FIXED: Removed leading space
+      title: 'The Educator Vision Colleges, Ahmad Pur Sial',
+      description: 'Intermediate in Pre-Engineering with a strong academic record and active participation in extracurricular activities.'
     },
     {
-      year: '2013 - 2015',
-      title: 'MASTER DEGREE - CAMBRIDGE UNIVERSITY',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      year: '2015 - 2017',
-      title: 'PHD DEGREE - STANFORD UNIVERSITY',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      year: 'Sep 2021 - Present',
+      title: 'The Islamia University of Bahawalpur (IUB), Bahawalpur',
+      description: 'Pursuing a Bachelor of Science in Computer Science, maintaining a high GPA and engaging in various tech-related projects and activities.'
     }
   ];
 
@@ -76,19 +80,15 @@ const About = () => {
       <div className="container mx-auto px-4 z-10 relative py-20">
         {/* Header */}
         <AnimatedSection className="text-center mb-20 relative" direction="up" delay={0.2}>
-          {/* Background RESUME text */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none select-none">
-            <h1 className="text-[6rem] md:text-[8rem] lg:text-[10rem] font-bold tracking-wider text-gray-800 dark:text-gray-200">RESUME</h1>
-          </div>
           <div className="relative z-10">
             <h1 className="text-5xl md:text-7xl font-bold uppercase mb-4">
               About <span className="text-theme-yellow">Me</span>
             </h1>
           </div>
         </AnimatedSection>
-        
+
         <div className="w-32 h-1 mb-12 bg-theme-yellow mx-auto"></div>
-        
+
         {/* Personal Infos & Stats Section */}
         <div className="flex flex-col lg:flex-row gap-16 mb-20">
           {/* Personal Infos */}
@@ -97,7 +97,7 @@ const About = () => {
             <div className="max-w-7xl mx-auto mb-12 flex justify-center lg:hidden">
               <div className="relative w-48 h-48">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-theme-yellow to-yellow-400 p-1">
-                  <div className="w-full h-full rounded-full overflow-hidden bg-black">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-theme-dark">
                     <img
                       src="/profile.jpeg"
                       alt="Profile"
@@ -128,7 +128,7 @@ const About = () => {
               </div>
               <div className="flex justify-between border-b border-gray-200 dark:border-gray-800 pb-3">
                 <span className="text-gray-500 uppercase text-sm">Address:</span>
-                <span>Bahawalpur,Pakistan</span>
+                <span>Bahawalpur, Pakistan</span>
               </div>
               <div className="flex justify-between border-b border-gray-200 dark:border-gray-800 pb-3">
                 <span className="text-gray-500 uppercase text-sm">Phone:</span>
@@ -136,48 +136,37 @@ const About = () => {
               </div>
               <div className="flex justify-between border-b border-gray-200 dark:border-gray-800 pb-3">
                 <span className="text-gray-500 uppercase text-sm">Email:</span>
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shahzaibmalik0409@gmail.com</span>
+                <span>shahzaibmalik0409@gmail.com</span>
               </div>
             </div>
+           
+            {/* FIXED DOWNLOAD BUTTON - No green toast, auto-remove yellow toast */}
             <button 
               onClick={() => {
-                // Create download link
                 const link = document.createElement('a');
-                link.href = '/profile.jpeg';
-                link.download = 'profile.jpeg';
-                link.style.display = 'none';
+                link.href = resumePdf;
+                link.download = 'SHAHZAIB.pdf';
+                link.target = '_blank';
                 document.body.appendChild(link);
-                
-                // Show toast immediately when download starts
+
+                // Show yellow toast only
                 const toast = document.createElement('div');
                 toast.className = 'fixed bottom-4 left-4 bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-pulse';
                 toast.textContent = 'Downloading resume...';
                 document.body.appendChild(toast);
-                
+
                 // Trigger download
                 link.click();
-                
-                // Update toast message after 1 second
-                setTimeout(() => {
-                  if (document.body.contains(toast)) {
-                    toast.textContent = 'Select Your Path!';
-                    toast.className = 'fixed bottom-4 left-4 bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
-                  }
-                }, 1000);
-                
-                // Remove toast after 3 seconds
+
+                // Auto-remove toast after 1.5 seconds - NO GREEN TOAST
                 setTimeout(() => {
                   if (document.body.contains(toast)) {
                     document.body.removeChild(toast);
                   }
-                }, 3000);
-                
-                // Clean up link
-                setTimeout(() => {
                   if (document.body.contains(link)) {
                     document.body.removeChild(link);
                   }
-                }, 100);
+                }, 1500);
               }}
               className="px-8 py-3 rounded-full border border-yellow-400 text-black dark:text-white font-bold hover:bg-yellow-400 hover:text-black transition-all duration-300 flex items-center gap-3"
             >
@@ -188,21 +177,18 @@ const About = () => {
           {/* Stats */}
           <AnimatedSection className="w-full lg:w-1/2 grid grid-cols-2 gap-6" direction="right" delay={0.4}>
             <div className="bg-gray-900 dark:bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-theme-yellow transition-colors duration-300">
-              <h3 className="text-4xl font-bold text-theme-yellow mb-2">12+</h3>
+              <h3 className="text-4xl font-bold text-theme-yellow mb-2">2+</h3>
               <p className="text-gray-200 uppercase text-sm">Years of <br />Experience</p>
             </div>
             <div className="bg-gray-900 dark:bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-theme-yellow transition-colors duration-300">
-              <h3 className="text-4xl font-bold text-theme-yellow mb-2">97+</h3>
+              <h3 className="text-4xl font-bold text-theme-yellow mb-2">10+</h3>
               <p className="text-gray-200 uppercase text-sm">Completed <br />Projects</p>
             </div>
             <div className="bg-gray-900 dark:bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-theme-yellow transition-colors duration-300">
-              <h3 className="text-4xl font-bold text-theme-yellow mb-2">81+</h3>
+              <h3 className="text-4xl font-bold text-theme-yellow mb-2">15+</h3>
               <p className="text-gray-200 uppercase text-sm">Happy <br />Customers</p>
             </div>
-            <div className="bg-gray-900 dark:bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-theme-yellow transition-colors duration-300">
-              <h3 className="text-4xl font-bold text-theme-yellow mb-2">53+</h3>
-              <p className="text-gray-200 uppercase text-sm">Awards <br />Won</p>
-            </div>
+            
           </AnimatedSection>
         </div>
 
@@ -345,5 +331,3 @@ const About = () => {
 };
 
 export default About;
-
-

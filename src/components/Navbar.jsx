@@ -12,7 +12,8 @@ import {
   FaComments,
   FaBars,
   FaTimes,
-  FaCog
+  FaMoon,
+  FaSun
 } from 'react-icons/fa';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -46,9 +47,9 @@ const Navbar = () => {
                 ? 'bg-gray-800 border-gray-800 text-white hover:bg-theme-yellow hover:text-black hover:border-theme-yellow'
                 : 'bg-white border-gray-200 text-gray-800 hover:bg-theme-yellow hover:text-black hover:border-theme-yellow'
             }`}
-          aria-label="Toggle theme"
+          aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
         >
-          <FaCog size={18} />
+          {isDarkMode ? <FaSun size={18} /> : <FaMoon size={18} />}
         </button>
       </div>
 
@@ -58,7 +59,7 @@ const Navbar = () => {
           fixed right-0 top-0 h-full z-50 flex flex-col justify-center transition-all duration-500
           ${
             isMenuOpen
-              ? `${isDarkMode ? 'w-full bg-black/90' : 'w-full bg-white/90'} backdrop-blur-sm items-center`
+              ? `${isDarkMode ? 'w-full bg-theme-dark/90' : 'w-full bg-white/90'} backdrop-blur-sm items-center`
               : 'hidden lg:flex lg:items-end lg:pr-6'
           }
         `}
@@ -85,7 +86,7 @@ const NavItem = ({ to, icon, text, showText, isDarkMode, onClick }) => {
               absolute right-0 top-1/2 -translate-y-1/2
               h-12 rounded-full
               bg-theme-yellow
-              transition-all duration-300
+              transition-all duration-700
               w-12 opacity-0 lg:group-hover:w-36 lg:group-hover:opacity-100
             `}
           />
@@ -94,7 +95,7 @@ const NavItem = ({ to, icon, text, showText, isDarkMode, onClick }) => {
             className={`
               absolute right-16 top-1/2 -translate-y-1/2
               text-white text-sm font-semibold uppercase
-              transition-all duration-300
+              transition-all duration-500
               opacity-0 translate-x-2 lg:group-hover:opacity-100 lg:group-hover:translate-x-0
             `}
           >

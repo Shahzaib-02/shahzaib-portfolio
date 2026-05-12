@@ -31,7 +31,7 @@ export const ThemeProvider = ({ children }) => {
       root.classList.add('dark');
       root.classList.remove('light');
       // Force apply styles with inline styles (highest specificity)
-      body.style.setProperty('background-color', 'black', 'important');
+      body.style.setProperty('background-color', '#111111', 'important');
       body.style.setProperty('color', 'white', 'important');
       body.style.setProperty('transition', 'background-color 0.5s, color 0.5s', 'important');
       body.style.setProperty('color-scheme', 'dark', 'important');

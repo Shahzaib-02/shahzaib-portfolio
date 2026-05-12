@@ -5,9 +5,12 @@ import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Home from './Pages/Home';
 import About from './Pages/About';
-import Portfolio from './Pages/Portfolio';
+import Portfolio from './Pages/Work';
 import Contact from './Pages/Contact';
 import Blog from './Pages/Blog';
+import BlogPost1 from './Pages/BlogPost1';
+import BlogPost2 from './Pages/BlogPost2';
+import BlogPost3 from './Pages/BlogPost3';
 import { ThemeProvider } from './contexts/ThemeContext';
 import PageTransition, { WipeTransition } from './components/PageTransition';
 import Preloader from './components/Preloader';
@@ -24,7 +27,7 @@ const AppContent = () => {
   return (
     <div className="relative min-h-screen transition-colors duration-500 
                     bg-white text-black 
-                    dark:bg-black dark:text-white">
+                    dark:bg-theme-dark dark:text-white">
       <AnimatePresence mode="wait">
         {isLoading && <Preloader />}
       </AnimatePresence>
@@ -78,6 +81,36 @@ const AppContent = () => {
                 <WipeTransition>
                   <PageTransition>
                     <Blog />
+                  </PageTransition>
+                </WipeTransition>
+              }
+            />
+            <Route
+              path="/blog/1"
+              element={
+                <WipeTransition>
+                  <PageTransition>
+                    <BlogPost1 />
+                  </PageTransition>
+                </WipeTransition>
+              }
+            />
+            <Route
+              path="/blog/2"
+              element={
+                <WipeTransition>
+                  <PageTransition>
+                    <BlogPost2 />
+                  </PageTransition>
+                </WipeTransition>
+              }
+            />
+            <Route
+              path="/blog/3"
+              element={
+                <WipeTransition>
+                  <PageTransition>
+                    <BlogPost3 />
                   </PageTransition>
                 </WipeTransition>
               }
