@@ -1,16 +1,63 @@
-# React + Vite
+# Shahzaib Malik — Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 **Live Demo:** [https://shahzaib-02.github.io/](https://shahzaib-02.github.io/)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📋 About
 
-## React Compiler
+A modern, responsive portfolio website showcasing full-stack web development projects. Built with React, Tailwind CSS, and Framer Motion for smooth animations and interactions.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Featured Projects
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Project | Description | Tech Stack |
+|---------|-------------|------------|
+| **ShopHub E-Commerce** | Full shopping platform with cart, user authentication, and localStorage persistence | React, JavaScript, CSS3 |
+| **NeuralGlass** | Interactive neural network architecture visualizer with animated UI | HTML, CSS, JavaScript |
+| **Resume Builder** | Dynamic resume generator with professional templates | React, JavaScript |
+| **Logo Collection** | Modern brand identity design showcase | HTML, CSS |
+| **Web Application** | Progressive web app with responsive design | React, Node.js |
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend:**
+- React.js
+- Tailwind CSS
+- Framer Motion
+- JavaScript (ES6+)
+- HTML5 & CSS3
+
+**Backend & Tools:**
+- Node.js
+- Express.js
+- MongoDB
+- Git & GitHub
+- VS Code
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Shahzaib-02/portfolio.git
+
+# Navigate to project directory
+cd portfolio
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
