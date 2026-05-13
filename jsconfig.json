@@ -1,32 +1,10 @@
 
-// {
-//   "compilerOptions": {
-//     "target": "ESNext",
-//     "module": "ESNext",
-//     "moduleResolution": "Bundler",
-//     "jsx": "react-jsx",
-//     "baseUrl": ".",
-//     "allowJs": true,
-//     "checkJs": false,
-//     "resolveJsonModule": true,
-//     "isolatedModules": true,
-//     "esModuleInterop": true,
-//     "skipLibCheck": true,
-//     "forceConsistentCasingInFileNames": true,
-//     "strict": false
-//   },
-//   "include": ["src"],
-//   "exclude": ["node_modules"]
-// }
-
-
 {
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "jsx": "react-jsx",
-    "baseUrl": ".",
     "allowJs": true,
     "checkJs": false,
     "resolveJsonModule": true,
