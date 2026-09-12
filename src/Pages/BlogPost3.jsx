@@ -1,526 +1,864 @@
-
-
-
-
-
-
-
-
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaArrowLeft, FaCalendarAlt, FaUser, FaClock, FaMobileAlt, FaDesktop, FaTabletAlt, FaCode, FaImage, FaHandPointer, FaTachometerAlt, FaVial, FaLayerGroup, FaCheckCircle } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import AnimatedSection from '../components/AnimatedSection';
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  FaArrowLeft,
+  FaCalendarAlt,
+  FaUser,
+  FaClock,
+  FaMobileAlt,
+  FaDesktop,
+  FaTabletAlt,
+  FaCode,
+  FaImage,
+  FaHandPointer,
+  FaTachometerAlt,
+  FaVial,
+  FaLayerGroup,
+  FaCheckCircle,
+  FaPalette,
+  FaUniversalAccess,
+  FaRocket,
+  FaLightbulb,
+  FaTools,
+} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import AnimatedSection from "../components/AnimatedSection";
 
 const BlogPost3 = () => {
   const navigate = useNavigate();
 
   const practices = [
     {
-      id: 1,
-      icon: <FaMobileAlt className="text-theme-yellow text-2xl" />,
-      title: "Mobile-First Approach",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=350&fit=crop",
-      description: "Start designing for mobile devices first, then progressively enhance for larger screens. This forces content prioritization and prevents feature stripping later.",
-      code: `/* Mobile First: Base styles for small screens */
+      id: "01",
+      icon: <FaMobileAlt />,
+      category: "FOUNDATION",
+      title: "Start With Mobile-First Design",
+      image:
+        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=800&fit=crop",
+      description:
+        "Mobile-first development means designing the smallest useful experience first and progressively enhancing it for tablets, laptops, and larger screens. Instead of removing features from a desktop design, you build a focused foundation and expand it intentionally.",
+      code: `/* Base: Mobile */
 .container {
-  padding: 1rem;
   width: 100%;
+  padding: 1rem;
 }
 
-/* Tablet: 768px and up */
+/* Tablet */
 @media (min-width: 768px) {
   .container {
-    padding: 2rem;
     max-width: 720px;
-    margin: 0 auto;
+    margin-inline: auto;
+    padding: 2rem;
   }
 }
 
-/* Desktop: 1024px and up */
+/* Desktop */
 @media (min-width: 1024px) {
   .container {
-    padding: 3rem;
     max-width: 1200px;
+    padding: 3rem;
   }
 }`,
       tips: [
-        "Design for 320px minimum width as baseline",
-        "Use min-width media queries (not max-width)",
-        "Ensure touch targets are minimum 44×44px",
-        "Prioritize content hierarchy for small screens",
-        "Test on actual mobile devices, not just dev tools"
+        "Design the smallest useful experience first",
+        "Use min-width breakpoints for progressive enhancement",
+        "Prioritize important content on smaller screens",
+        "Avoid assuming every user has a large display",
+        "Test on physical mobile devices when possible",
       ],
-      stat: "58% of global web traffic is mobile"
     },
+
     {
-      id: 2,
-      icon: <FaLayerGroup className="text-theme-yellow text-2xl" />,
-      title: "Flexible Grid Systems",
-      image: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=600&h=350&fit=crop",
-      description: "Modern CSS Grid and Flexbox create layouts that adapt naturally to any screen size without complex calculations or breakpoint overrides.",
-      code: `/* CSS Grid: Auto-fitting cards */
+      id: "02",
+      icon: <FaLayerGroup />,
+      category: "LAYOUT",
+      title: "Build With Flexible Layout Systems",
+      image:
+        "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=1200&h=800&fit=crop",
+      description:
+        "Modern responsive layouts should rely on flexible CSS rather than manually positioning every element. CSS Grid and Flexbox allow components to adapt naturally as available space changes.",
+      code: `/* Responsive card grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit, 
-    minmax(280px, 1fr)
-  );
+  grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
-/* Flexbox: Navigation that wraps */
+/* Flexible navigation */
 .nav {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
+  align-items: center;
 }`,
       tips: [
-        "Use CSS Grid for 2D layouts (rows + columns)",
-        "Use Flexbox for 1D layouts (single direction)",
-        "Avoid fixed widths—use %, fr, or auto",
-        "Implement container queries for component-level responsiveness",
-        "Use gap property instead of margins for spacing"
+        "Use Grid for two-dimensional layouts",
+        "Use Flexbox for one-dimensional layouts",
+        "Prefer fr, %, rem and auto over fixed widths",
+        "Use gap for predictable spacing",
+        "Consider container queries for reusable components",
       ],
-      stat: "Grid + Flexbox reduce layout code by 60%"
     },
+
     {
-      id: 3,
-      icon: <FaDesktop className="text-theme-yellow text-2xl" />,
-      title: "Fluid Typography",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=350&fit=crop",
-      description: "Typography should scale smoothly between minimum and maximum values using modern CSS functions, eliminating breakpoint-based font size jumps.",
-      code: `/* Fluid type using clamp() */
+      id: "03",
+      icon: <FaDesktop />,
+      category: "TYPOGRAPHY",
+      title: "Use Fluid Typography",
+      image:
+        "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop",
+      description:
+        "Typography should adapt to the available viewport instead of jumping between a small number of fixed breakpoint values. CSS clamp() makes it possible to define a minimum, fluid preferred value, and maximum size.",
+      code: `/* Fluid heading */
 h1 {
   font-size: clamp(
-    1.75rem,      /* minimum: 28px */
-    4vw + 1rem,   /* preferred: fluid */
-    3.5rem        /* maximum: 56px */
+    2rem,
+    4vw + 1rem,
+    4rem
   );
 }
 
-/* Line height that adjusts */
+/* Fluid paragraph */
 p {
-  line-height: clamp(1.5, 1.6 + 0.2vw, 1.8);
+  font-size: clamp(
+    1rem,
+    1vw + 0.8rem,
+    1.25rem
+  );
+
+  line-height: 1.7;
 }`,
       tips: [
-        "Use rem units for accessibility (respects user preferences)",
-        "Clamp() requires 3 values: min, preferred, max",
-        "Preferred value should use vw or % for fluidity",
-        "Maintain readable line lengths: 60-75 characters",
-        "Test with browser zoom up to 200%"
+        "Use rem for scalable accessible sizing",
+        "Use clamp() for fluid heading sizes",
+        "Keep paragraphs comfortable to read",
+        "Avoid extremely long text lines",
+        "Test layouts at increased browser zoom",
       ],
-      stat: "Fluid type improves readability by 35%"
     },
+
     {
-      id: 4,
-      icon: <FaImage className="text-theme-yellow text-2xl" />,
-      title: "Responsive Images",
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=350&fit=crop",
-      description: "Serve appropriately-sized images for each device to save bandwidth and improve load times without sacrificing visual quality.",
+      id: "04",
+      icon: <FaImage />,
+      category: "MEDIA",
+      title: "Optimize Images for Every Screen",
+      image:
+        "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&h=800&fit=crop",
+      description:
+        "Images can easily become one of the largest resources on a web page. Responsive image techniques allow browsers to select an appropriate image based on screen size and resolution.",
       code: `<img
-  src="hero-800.webp"
-  srcset="
-    hero-400.webp 400w,
-    hero-800.webp 800w,
-    hero-1200.webp 1200w
+  src="/images/hero-800.webp"
+  srcSet="
+    /images/hero-400.webp 400w,
+    /images/hero-800.webp 800w,
+    /images/hero-1200.webp 1200w
   "
   sizes="
-    (max-width: 600px) 100vw,
-    (max-width: 1200px) 50vw,
-    33vw
+    (max-width: 640px) 100vw,
+    (max-width: 1024px) 80vw,
+    1200px
   "
-  alt="Responsive hero image"
+  alt="Product dashboard"
   loading="lazy"
 />`,
       tips: [
-        "Use WebP/AVIF formats with JPEG fallbacks",
-        "Implement lazy loading for below-fold images",
-        "Use CSS aspect-ratio to prevent layout shift",
-        "Art direction with <picture> element for crop changes",
-        "Compress images to 80-85% quality for optimal size"
+        "Prefer modern formats such as WebP or AVIF",
+        "Use srcSet for responsive image delivery",
+        "Lazy-load images below the initial viewport",
+        "Reserve image dimensions to reduce layout shifts",
+        "Use picture for art-direction requirements",
       ],
-      stat: "Proper images reduce page weight by 40%"
     },
+
     {
-      id: 5,
-      icon: <FaHandPointer className="text-theme-yellow text-2xl" />,
-      title: "Touch-Friendly Interactions",
-      image: "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=600&h=350&fit=crop",
-      description: "Design for fingers, not cursors. Touch interfaces require larger targets, gesture support, and hover state alternatives.",
-      code: `/* Minimum touch target size */
-.btn {
+      id: "05",
+      icon: <FaHandPointer />,
+      category: "INTERACTION",
+      title: "Design Touch-Friendly Interfaces",
+      image:
+        "https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=1200&h=800&fit=crop",
+      description:
+        "Touch interaction is fundamentally different from mouse interaction. Users need comfortable targets, clear feedback, and alternatives to interactions that depend entirely on hover.",
+      code: `/* Comfortable interactive target */
+.button {
   min-width: 44px;
   min-height: 44px;
-  padding: 12px 24px;
+  padding: 12px 20px;
 }
 
-/* Remove hover effects on touch */
+/* Hover only when supported */
 @media (hover: hover) {
-  .btn:hover {
-    background: #f0f0f0;
+  .button:hover {
+    transform: translateY(-2px);
   }
 }
 
-/* Add active state for touch feedback */
-.btn:active {
+/* Touch feedback */
+.button:active {
   transform: scale(0.98);
 }`,
       tips: [
-        "Minimum 44×44px touch targets (Apple HIG standard)",
-        "Space interactive elements 8px apart minimum",
-        "Replace hover dropdowns with click/tap toggles",
-        "Support swipe gestures for carousels and galleries",
-        "Provide haptic feedback where available"
+        "Keep interactive targets comfortably sized",
+        "Do not rely only on hover interactions",
+        "Give users visible interaction feedback",
+        "Avoid placing important controls too close together",
+        "Make gestures optional rather than mandatory",
       ],
-      stat: "Touch optimization reduces errors by 50%"
     },
+
     {
-      id: 6,
-      icon: <FaTachometerAlt className="text-theme-yellow text-2xl" />,
-      title: "Performance Optimization",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=350&fit=crop",
-      description: "Responsive design must not compromise speed. Optimize assets, minimize reflows, and deliver critical content first across all breakpoints.",
-      code: `/* Content-visibility for off-screen sections */
-.section {
+      id: "06",
+      icon: <FaTachometerAlt />,
+      category: "PERFORMANCE",
+      title: "Make Responsive Performance a Priority",
+      image:
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop",
+      description:
+        "Responsive design is more than adapting dimensions. A responsive application should also adapt its resource usage. Mobile users may have slower networks, smaller devices, and more limited processing resources.",
+      code: `/* Defer rendering of expensive sections */
+.heavy-section {
   content-visibility: auto;
   contain-intrinsic-size: 0 500px;
 }
 
-/* Critical CSS inlined, async load rest */
-<link rel="preload" href="critical.css" as="style">
-<link rel="stylesheet" href="critical.css">
-
-/* Async non-critical CSS */
-<link rel="preload" href="main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">`,
+/* Reserve media space */
+.media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}`,
       tips: [
-        "Inline critical CSS in <head> for fast first paint",
-        "Use content-visibility for below-fold sections",
-        "Minimize layout shifts with reserved spaces",
-        "Preload key resources with <link rel='preload'>",
-        "Use service workers for offline functionality"
+        "Lazy-load expensive resources",
+        "Optimize JavaScript bundles",
+        "Avoid unnecessary API requests",
+        "Reserve dimensions for media",
+        "Measure performance on mobile hardware",
       ],
-      stat: "1s delay reduces conversions by 7%"
     },
-    {
-      id: 7,
-      icon: <FaVial className="text-theme-yellow text-2xl" />,
-      title: "Testing Across Devices",
-      image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=350&fit=crop",
-      description: "Real-world testing on actual devices reveals issues that emulators miss—touch responsiveness, performance, and viewport quirks.",
-      code: `/* Device testing checklist */
-Breakpoints to test:
-├── 320px  (iPhone SE)
-├── 375px  (iPhone 12/13)
-├── 414px  (iPhone Max)
-├── 768px  (iPad portrait)
-├── 1024px (iPad landscape)
-├── 1440px (Laptop)
-└── 1920px (Desktop)
 
-Orientations: portrait + landscape
-Zoom levels: 100%, 150%, 200%`,
-      tips: [
-        "Test on real devices, not just Chrome DevTools",
-        "Use BrowserStack or LambdaTest for device variety",
-        "Test both portrait and landscape orientations",
-        "Verify at different zoom levels (100%-200%)",
-        "Check with slow 3G throttling for performance"
-      ],
-      stat: "Real device testing catches 3x more bugs"
-    },
     {
-      id: 8,
-      icon: <FaCode className="text-theme-yellow text-2xl" />,
-      title: "Progressive Enhancement",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=350&fit=crop",
-      description: "Build a solid foundation that works everywhere, then layer enhancements for modern browsers. This ensures accessibility for all users regardless of device capability.",
-      code: `/* Base: Works everywhere */
+      id: "07",
+      icon: <FaVial />,
+      category: "QUALITY ASSURANCE",
+      title: "Test Beyond Browser DevTools",
+      image:
+        "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=1200&h=800&fit=crop",
+      description:
+        "A layout that looks perfect inside browser developer tools may still behave differently on real hardware. Device testing helps identify issues involving touch input, keyboard behavior, browser differences, performance, and orientation changes.",
+      code: `Responsive test matrix:
+
+320px   → Small mobile
+375px   → Standard mobile
+414px   → Large mobile
+768px   → Tablet
+1024px  → Laptop / tablet landscape
+1440px  → Desktop
+1920px  → Large desktop
+
+Also test:
+- Portrait
+- Landscape
+- 100% zoom
+- 200% zoom
+- Slow network`,
+      tips: [
+        "Test multiple viewport sizes",
+        "Check both portrait and landscape",
+        "Test keyboard navigation",
+        "Test zoom up to 200%",
+        "Use real devices when available",
+      ],
+    },
+
+    {
+      id: "08",
+      icon: <FaCode />,
+      category: "ARCHITECTURE",
+      title: "Use Progressive Enhancement",
+      image:
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=800&fit=crop",
+      description:
+        "Progressive enhancement starts with a reliable core experience and adds advanced capabilities when the environment supports them. This approach creates applications that are more resilient across browsers and devices.",
+      code: `/* Reliable foundation */
 .card {
-  border: 1px solid #ddd;
   padding: 1rem;
+  border: 1px solid #ddd;
 }
 
-/* Enhanced: Modern browsers */
+/* Enhanced layout */
 @supports (display: grid) {
   .card {
     display: grid;
-    grid-template-rows: auto 1fr auto;
     gap: 1rem;
-    border: none;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 0;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
   }
 }
 
-/* Advanced: Cutting edge */
+/* Modern enhancement */
 @supports (container-type: inline-size) {
   .card {
     container-type: inline-size;
   }
 }`,
       tips: [
-        "Core functionality works without JavaScript",
-        "Use @supports for feature detection",
-        "Provide fallbacks for CSS Grid and Flexbox",
-        "Respect prefers-reduced-motion for animations",
-        "Ensure forms submit without JS enhancement"
+        "Keep essential functionality reliable",
+        "Use feature detection instead of browser guessing",
+        "Provide sensible fallbacks",
+        "Respect reduced-motion preferences",
+        "Do not make JavaScript mandatory for every interaction",
       ],
-      stat: "Progressive sites work on 99.2% of devices"
-    }
+    },
+  ];
+
+  const workflow = [
+    {
+      icon: <FaMobileAlt />,
+      title: "Mobile",
+      text: "Create the core experience",
+    },
+    {
+      icon: <FaTabletAlt />,
+      title: "Tablet",
+      text: "Expand the layout",
+    },
+    {
+      icon: <FaDesktop />,
+      title: "Desktop",
+      text: "Use available space",
+    },
   ];
 
   return (
     <div className="min-h-screen text-black dark:text-white font-sans overflow-x-hidden relative transition-colors duration-300">
+
+      {/* Background decoration */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-24 left-[-180px] w-[400px] h-[400px] rounded-full bg-theme-yellow/10 blur-3xl" />
+        <div className="absolute top-[50%] right-[-200px] w-[450px] h-[450px] rounded-full bg-theme-yellow/5 blur-3xl" />
+      </div>
+
       {/* Navigation */}
-      <motion.nav 
+      <motion.nav
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800"
+        className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800"
       >
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <button 
-            onClick={() => navigate('/blog')}
+          <button
+            onClick={() => navigate("/#blog")}
             className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-theme-yellow transition-colors font-medium"
           >
-            <FaArrowLeft /> Back to Blog
+            <FaArrowLeft />
+            Back to Blog
           </button>
 
+          <div className="hidden sm:flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold text-gray-400">
+            <FaCode />
+            Frontend Engineering
+          </div>
         </div>
       </motion.nav>
 
-      <div className="container mx-auto px-4 z-10 relative pt-24 pb-20">
-        
+      <main className="container mx-auto px-4 relative z-10 pt-28 pb-24">
+
         {/* Hero */}
-        <AnimatedSection direction="up" delay={0.1} className="max-w-5xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-theme-yellow/10 dark:bg-theme-yellow/20 rounded-full text-theme-yellow text-sm font-medium mb-6">
-            <FaDesktop /> Development Guide
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase mb-6 leading-tight">
-            Responsive Design <br />
-            <span className="text-theme-yellow">Best Practices</span>
-          </h1>
-          
-          <div className="flex items-center justify-center gap-6 text-sm text-gray-500 dark:text-gray-400 mb-8">
-            <span className="flex items-center gap-2"><FaCalendarAlt /> May 10, 2025</span>
-            <span className="flex items-center gap-2"><FaUser /> SHAHZAIB</span>
-            <span className="flex items-center gap-2"><FaClock /> 15 min read</span>
+        <AnimatedSection
+          direction="up"
+          delay={0.1}
+          className="max-w-5xl mx-auto text-center"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-theme-yellow/10 dark:bg-theme-yellow/20 text-theme-yellow text-sm font-semibold mb-7">
+            <FaMobileAlt />
+            FRONTEND DEVELOPMENT GUIDE
           </div>
 
-          <div className="w-24 h-1 bg-theme-yellow mx-auto rounded-full"></div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase leading-[1.05] mb-7">
+            Responsive Web Design
+            <br />
+            <span className="text-theme-yellow">
+              Best Practices
+            </span>
+          </h1>
+
+          <p className="max-w-3xl mx-auto text-lg md:text-xl leading-relaxed text-gray-600 dark:text-gray-400 mb-8">
+            A practical guide to building responsive, accessible and
+            production-ready interfaces that work beautifully across mobile,
+            tablet and desktop devices.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-5 text-sm text-gray-500 dark:text-gray-400 mb-8">
+            <span className="flex items-center gap-2">
+              <FaCalendarAlt />
+              Sep 12, 2026
+            </span>
+
+            <span className="flex items-center gap-2">
+              <FaUser />
+              SHAHZAIB
+            </span>
+
+            <span className="flex items-center gap-2">
+              <FaClock />
+              14 min read
+            </span>
+          </div>
+
+          <div className="w-24 h-1 bg-theme-yellow mx-auto rounded-full" />
         </AnimatedSection>
 
         {/* Hero Image */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-5xl mx-auto mb-16 rounded-2xl overflow-hidden shadow-2xl"
+          transition={{ duration: 0.8, delay: 0.25 }}
+          className="max-w-6xl mx-auto mt-14 rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-2xl"
         >
-          <div className="relative h-64 md:h-96">
-            <img 
-              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=600&fit=crop" 
-              alt="Responsive Design Across Devices" 
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+          <div className="relative h-[300px] md:h-[520px]">
+            <img
+              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1600&h=900&fit=crop"
+              alt="Developers designing responsive web interfaces"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
             />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-white">
+              <div className="flex flex-wrap gap-2 mb-4">
+                {[
+                  "Responsive UI",
+                  "CSS",
+                  "React",
+                  "UX",
+                  "Performance",
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <p className="max-w-2xl text-sm md:text-base text-gray-200">
+                Build interfaces that adapt naturally to different screens,
+                input methods and device capabilities.
+              </p>
+            </div>
           </div>
         </motion.div>
 
-        {/* Device Icons Bar */}
-        <motion.div 
+        {/* Device Workflow */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="max-w-4xl mx-auto mb-20"
+          transition={{ delay: 0.5 }}
+          className="max-w-4xl mx-auto mt-10 mb-20"
         >
-          <div className="flex items-center justify-center gap-8 md:gap-16 py-6 bg-gray-50 dark:bg-gray-900/50 rounded-2xl border border-gray-100 dark:border-gray-800">
-            <div className="flex flex-col items-center gap-2 text-gray-500 dark:text-gray-400">
-              <FaMobileAlt className="text-2xl" />
-              <span className="text-xs font-medium">Mobile</span>
-            </div>
-            <div className="w-px h-8 bg-gray-300 dark:bg-gray-700"></div>
-            <div className="flex flex-col items-center gap-2 text-gray-500 dark:text-gray-400">
-              <FaTabletAlt className="text-2xl" />
-              <span className="text-xs font-medium">Tablet</span>
-            </div>
-            <div className="w-px h-8 bg-gray-300 dark:bg-gray-700"></div>
-            <div className="flex flex-col items-center gap-2 text-gray-500 dark:text-gray-400">
-              <FaDesktop className="text-2xl" />
-              <span className="text-xs font-medium">Desktop</span>
-            </div>
+          <div className="grid grid-cols-3 bg-gray-50 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden">
+            {workflow.map((item, index) => (
+              <div
+                key={item.title}
+                className={`flex flex-col items-center text-center p-5 md:p-7 ${
+                  index !== workflow.length - 1
+                    ? "border-r border-gray-200 dark:border-gray-800"
+                    : ""
+                }`}
+              >
+                <div className="text-theme-yellow text-2xl md:text-3xl mb-3">
+                  {item.icon}
+                </div>
+
+                <h3 className="font-bold mb-1">
+                  {item.title}
+                </h3>
+
+                <p className="hidden md:block text-xs text-gray-500 dark:text-gray-400">
+                  {item.text}
+                </p>
+              </div>
+            ))}
           </div>
         </motion.div>
 
-        {/* Intro */}
-        <AnimatedSection direction="up" delay={0.3} className="max-w-4xl mx-auto mb-20">
-          <div className="bg-gradient-to-r from-theme-yellow/5 to-theme-yellow/5 dark:from-theme-yellow/10 dark:to-theme-yellow/10 border-l-4 border-theme-yellow p-6 md:p-8 rounded-r-xl">
+        {/* Introduction */}
+        <AnimatedSection
+          direction="up"
+          delay={0.2}
+          className="max-w-4xl mx-auto mb-28"
+        >
+          <div className="border-l-4 border-theme-yellow pl-6 md:pl-8">
             <p className="text-lg md:text-xl leading-relaxed text-gray-700 dark:text-gray-300">
-              In today's multi-device world, responsive design is <span className="text-theme-yellow font-semibold">non-negotiable</span>. 
-              With over 58% of traffic coming from mobile devices, your site must adapt flawlessly to any screen. 
-              This guide covers battle-tested techniques—from mobile-first strategy to performance optimization—that professional developers use daily.
+              Responsive design is not simply about making a website
+              "shrink" on smaller screens. A truly responsive application
+              adapts its{" "}
+              <span className="text-theme-yellow font-semibold">
+                layout, typography, media, interactions and performance
+              </span>{" "}
+              according to the environment in which it is being used.
+            </p>
+
+            <p className="text-base md:text-lg leading-relaxed text-gray-600 dark:text-gray-400 mt-5">
+              The best responsive interfaces feel intentional on every device.
+              They do not look like a desktop page that was compressed to fit
+              a phone.
             </p>
           </div>
         </AnimatedSection>
 
+        {/* Quick Principles */}
+        <AnimatedSection
+          direction="up"
+          delay={0.2}
+          className="max-w-6xl mx-auto mb-28"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                icon: <FaMobileAlt />,
+                title: "Adapt",
+                text: "Let layouts respond naturally to available space.",
+              },
+              {
+                icon: <FaTachometerAlt />,
+                title: "Optimize",
+                text: "Deliver only the resources users actually need.",
+              },
+              {
+                icon: <FaUniversalAccess />,
+                title: "Include",
+                text: "Make interfaces usable across devices and abilities.",
+              },
+            ].map((item) => (
+              <motion.div
+                key={item.title}
+                whileHover={{ y: -6 }}
+                className="p-7 rounded-2xl bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800"
+              >
+                <div className="w-12 h-12 rounded-xl bg-theme-yellow/10 flex items-center justify-center text-theme-yellow text-xl mb-5">
+                  {item.icon}
+                </div>
+
+                <h3 className="text-lg font-bold uppercase mb-2">
+                  {item.title}
+                </h3>
+
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {item.text}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </AnimatedSection>
+
         {/* Practices */}
-        <div className="max-w-6xl mx-auto space-y-24">
-          {practices.map((practice, index) => (
-            <motion.article
-              key={practice.id}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6 }}
-              className="relative pl-8 md:pl-16"
-            >
-              {/* Section Number - FIXED POSITIONING */}
-              <div className="absolute left-0 top-0 w-10 h-10 md:w-14 md:h-14 bg-theme-yellow text-black rounded-full flex items-center justify-center text-lg md:text-xl font-bold shadow-lg z-10 border-4 border-white dark:border-gray-950">
-                {practice.id}
-              </div>
+        <div className="max-w-6xl mx-auto space-y-32">
 
-              <div>
-                {/* Header */}
-                <div className="flex items-center gap-3 mb-6 ml-2 md:ml-4">
-                  <div className="p-2 bg-theme-yellow/10 dark:bg-theme-yellow/20 rounded-lg">
-                    {practice.icon}
+          {practices.map((practice, index) => {
+            const reverse = index % 2 !== 0;
+
+            return (
+              <motion.article
+                key={practice.id}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7 }}
+                className="relative"
+              >
+
+                {/* Section Number */}
+                <div className="absolute -top-5 left-0 md:-left-4 z-20">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-theme-yellow text-black flex items-center justify-center font-bold text-lg md:text-xl shadow-xl border-4 border-white dark:border-gray-950">
+                    {practice.id}
                   </div>
-                  <h2 className="text-xl md:text-2xl font-bold uppercase">{practice.title}</h2>
                 </div>
 
-                {/* Main Content Grid */}
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 ${index % 2 === 1 ? '' : ''}`}>
-                  
-                  {/* Image + Stat - FIXED HEIGHT */}
-                  <motion.div 
-                    className={`relative group ${index % 2 === 1 ? 'lg:order-2' : ''}`}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                <div className="pt-12">
+
+                  {/* Header */}
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-theme-yellow/10 dark:bg-theme-yellow/20 text-theme-yellow text-xl">
+                      {practice.icon}
+                    </div>
+
+                    <div>
+                      <span className="text-xs font-bold tracking-[0.2em] text-theme-yellow">
+                        {practice.category}
+                      </span>
+
+                      <h2 className="text-2xl md:text-4xl font-bold uppercase mt-1">
+                        {practice.title}
+                      </h2>
+                    </div>
+                  </div>
+
+                  <div
+                    className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
+                      reverse ? "lg:[&>*:first-child]:order-2" : ""
+                    }`}
                   >
-                    {/* Background decoration - same height as image container */}
-                    <div className="absolute inset-0 bg-theme-yellow/20 rounded-2xl transform rotate-1 group-hover:rotate-3 transition-transform duration-300 h-56 md:h-72"></div>
-                    
-                    {/* Image container with fixed height */}
-                    <div className="relative h-56 md:h-72 rounded-2xl overflow-hidden shadow-xl">
-                      <img 
-                        src={practice.image} 
-                        alt={practice.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2">
-                        <FaCheckCircle className="text-theme-yellow" /> {practice.stat}
+
+                    {/* Image */}
+                    <motion.div
+                      whileHover={{ y: -7 }}
+                      className="relative group"
+                    >
+                      <div className="absolute -inset-2 bg-theme-yellow/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                      <div className="relative h-[280px] md:h-[390px] rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-xl">
+                        <img
+                          src={practice.image}
+                          alt={practice.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+                        <div className="absolute bottom-5 left-5 right-5 flex items-center gap-2">
+                          <div className="w-9 h-9 rounded-full bg-theme-yellow flex items-center justify-center text-black">
+                            <FaCheckCircle />
+                          </div>
+
+                          <span className="text-white text-sm font-semibold">
+                            Production-ready principle
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Content */}
+                    <div>
+                      <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-7">
+                        {practice.description}
+                      </p>
+
+                      {/* Code */}
+                      <div className="rounded-2xl overflow-hidden bg-gray-950 border border-gray-800 shadow-xl">
+                        <div className="flex items-center gap-2 px-4 py-3 bg-gray-900 border-b border-gray-800">
+                          <div className="w-3 h-3 rounded-full bg-red-500" />
+                          <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                          <div className="w-3 h-3 rounded-full bg-green-500" />
+
+                          <span className="ml-2 text-xs text-gray-500 font-mono">
+                            responsive.css
+                          </span>
+                        </div>
+
+                        <pre className="p-5 overflow-x-auto max-h-[320px]">
+                          <code className="text-sm text-gray-300 font-mono whitespace-pre">
+                            {practice.code}
+                          </code>
+                        </pre>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
 
-                  {/* Description */}
-                  <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg">
-                      {practice.description}
-                    </p>
+                  {/* Tips */}
+                  <div className="mt-10">
+                    <div className="flex items-center gap-2 mb-5">
+                      <FaTools className="text-theme-yellow" />
 
-                    {/* Code Block */}
-                    <div className="bg-gray-900 rounded-xl overflow-hidden mb-6 shadow-lg">
-                      <div className="flex items-center gap-2 px-4 py-2 bg-gray-800 border-b border-gray-700">
-                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                        <span className="ml-2 text-xs text-gray-400 font-mono">example.css</span>
-                      </div>
-                      <pre className="p-4 overflow-x-auto max-h-48">
-                        <code className="text-sm text-gray-300 font-mono whitespace-pre">
-                          {practice.code}
-                        </code>
-                      </pre>
+                      <span className="text-xs uppercase tracking-[0.2em] font-bold text-gray-500 dark:text-gray-400">
+                        Practical Tips
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {practice.tips.map((tip, tipIndex) => (
+                        <motion.div
+                          key={tipIndex}
+                          initial={{ opacity: 0, y: 15 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            delay: tipIndex * 0.06,
+                            duration: 0.4,
+                          }}
+                          className="flex items-start gap-3 p-4 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 hover:border-theme-yellow/50 transition-colors"
+                        >
+                          <FaCheckCircle className="text-theme-yellow shrink-0 mt-1" />
+
+                          <span className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                            {tip}
+                          </span>
+                        </motion.div>
+                      ))}
                     </div>
                   </div>
                 </div>
-
-                {/* Tips Grid */}
-                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ml-2 md:ml-4">
-                  {practice.tips.map((tip, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-start gap-3 p-4 bg-gray-50 dark:bg-gray-800/30 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-theme-yellow/50 transition-colors"
-                    >
-                      <FaCheckCircle className="text-theme-yellow shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-600 dark:text-gray-400">{tip}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.article>
-          ))}
+              </motion.article>
+            );
+          })}
         </div>
 
-        {/* Summary Checklist */}
-        <AnimatedSection direction="up" delay={0.2} className="max-w-5xl mx-auto mt-24 mb-16">
-          <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-800 dark:via-gray-900 dark:to-black rounded-2xl p-8 md:p-12 text-white relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-theme-yellow/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-theme-yellow/10 rounded-full blur-3xl"></div>
-            
+        {/* Architecture Section */}
+        <AnimatedSection
+          direction="up"
+          delay={0.2}
+          className="max-w-6xl mx-auto mt-32"
+        >
+          <div className="rounded-3xl bg-gray-950 text-white p-8 md:p-12 overflow-hidden relative">
+
+            <div className="absolute top-[-150px] right-[-100px] w-[350px] h-[350px] rounded-full bg-theme-yellow/10 blur-3xl" />
+
             <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-6 justify-center">
-                <FaDesktop className="text-theme-yellow text-3xl" />
-                <h3 className="text-2xl md:text-3xl font-bold uppercase">Responsive Checklist</h3>
+
+              <div className="flex items-center gap-3 mb-4">
+                <FaPalette className="text-theme-yellow text-2xl" />
+
+                <span className="text-theme-yellow text-sm font-bold tracking-[0.2em]">
+                  RESPONSIVE ARCHITECTURE
+                </span>
               </div>
-              
-              <p className="text-gray-300 mb-8 text-center max-w-2xl mx-auto">
-                Before shipping any project, verify these essentials are in place:
+
+              <h2 className="text-3xl md:text-4xl font-bold uppercase mb-5">
+                Think Beyond Breakpoints
+              </h2>
+
+              <p className="text-gray-400 max-w-3xl leading-relaxed mb-10">
+                Responsive engineering becomes much easier when components
+                are designed around content and available space rather than a
+                long list of device-specific breakpoints.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {[
-                  "Tested on real mobile devices",
-                  "Images optimized with srcset",
-                  "Touch targets 44×44px minimum",
-                  "Fluid typography with clamp()",
-                  "Core functionality works without JS",
-                  "Lighthouse score 90+ on mobile",
-                  "No horizontal scroll at any width",
-                  "Respects prefers-reduced-motion"
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
-                    className="flex items-center gap-3 p-3 bg-white/5 backdrop-blur-sm rounded-lg"
+                  {
+                    title: "Content",
+                    text: "Start with semantic structure and meaningful content.",
+                  },
+                  {
+                    title: "Container",
+                    text: "Let components respond to the space available to them.",
+                  },
+                  {
+                    title: "Capability",
+                    text: "Enhance the experience based on device capabilities.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="p-6 rounded-2xl bg-white/5 border border-white/10"
                   >
-                    <span className="text-theme-yellow font-bold">✓</span>
-                    <span className="text-sm text-gray-300">{item}</span>
-                  </motion.div>
+                    <h3 className="text-theme-yellow font-bold text-lg mb-2">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
           </div>
         </AnimatedSection>
 
-        {/* CTA */}
-        <AnimatedSection direction="up" delay={0.2} className="max-w-4xl mx-auto text-center">
-          <div className="bg-theme-yellow/10 dark:bg-theme-yellow/5 border border-theme-yellow/20 rounded-2xl p-8 md:p-12">
-            <FaMobileAlt className="text-theme-yellow text-4xl mx-auto mb-6" />
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Build for Everyone</h3>
-            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
-              Responsive design isn't a feature—it's a mindset. Every decision should consider the full spectrum of devices, 
-              connections, and abilities your users bring. Ship inclusive experiences that work for all.
-            </p>
-            <button 
-              onClick={() => navigate('/blog')}
-              className="px-8 py-3 bg-theme-yellow text-black font-bold rounded-full hover:bg-yellow-400 transition-colors inline-flex items-center gap-2"
-            >
-              <FaArrowLeft /> Explore More Articles
-            </button>
+        {/* Checklist */}
+        <AnimatedSection
+          direction="up"
+          delay={0.2}
+          className="max-w-5xl mx-auto mt-28"
+        >
+          <div className="rounded-3xl border border-theme-yellow/20 bg-theme-yellow/5 dark:bg-theme-yellow/[0.03] p-8 md:p-12">
+
+            <div className="text-center mb-10">
+              <FaCheckCircle className="text-theme-yellow text-4xl mx-auto mb-5" />
+
+              <h2 className="text-3xl md:text-4xl font-bold uppercase">
+                Responsive Launch Checklist
+              </h2>
+
+              <p className="text-gray-600 dark:text-gray-400 mt-3">
+                Run through these checks before shipping your next interface.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                "Mobile-first layout implemented",
+                "No unwanted horizontal scrolling",
+                "Flexible Grid or Flexbox layout",
+                "Fluid typography where appropriate",
+                "Responsive images implemented",
+                "Touch interactions are comfortable",
+                "Keyboard navigation works",
+                "Images and assets are optimized",
+                "Reduced-motion preference is respected",
+                "Tested across multiple viewport sizes",
+                "Important content remains accessible",
+                "Performance checked on mobile",
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -15 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.04 }}
+                  className="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800"
+                >
+                  <FaCheckCircle className="text-theme-yellow shrink-0" />
+
+                  <span className="text-sm text-gray-700 dark:text-gray-300">
+                    {item}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </AnimatedSection>
 
-        <div className="pb-20"></div>
-      </div>
+        {/* Conclusion */}
+        <AnimatedSection
+          direction="up"
+          delay={0.2}
+          className="max-w-4xl mx-auto mt-28"
+        >
+          <div className="relative overflow-hidden rounded-3xl bg-theme-yellow/10 dark:bg-theme-yellow/5 border border-theme-yellow/20 p-8 md:p-14 text-center">
+
+            <div className="absolute top-[-100px] right-[-80px] w-64 h-64 bg-theme-yellow/10 rounded-full blur-3xl" />
+
+            <div className="relative z-10">
+              <FaLightbulb className="text-theme-yellow text-4xl mx-auto mb-6" />
+
+              <h3 className="text-2xl md:text-4xl font-bold uppercase mb-5">
+                Responsive Is a Mindset
+              </h3>
+
+              <p className="text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-8">
+                Great responsive interfaces are not created by adding dozens
+                of media queries at the end of a project. They are created by
+                making better decisions from the beginning—flexible layouts,
+                accessible interactions, optimized assets, fluid typography
+                and thoughtful component architecture.
+              </p>
+
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <button
+                  onClick={() => navigate("/#projects")}
+                  className="px-7 py-3 bg-theme-yellow text-black font-bold rounded-full hover:bg-yellow-400 transition-colors inline-flex items-center justify-center gap-2"
+                >
+                  <FaRocket />
+                  View My Projects
+                </button>
+
+                <button
+                  onClick={() => navigate("/#blog")}
+                  className="px-7 py-3 border border-gray-300 dark:border-gray-700 rounded-full font-semibold hover:border-theme-yellow hover:text-theme-yellow transition-colors inline-flex items-center justify-center gap-2"
+                >
+                  <FaArrowLeft />
+                  More Articles
+                </button>
+              </div>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        <div className="pb-10" />
+      </main>
     </div>
   );
 };

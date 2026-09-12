@@ -69,14 +69,14 @@ const About = () => {
       description: 'Intermediate in Pre-Engineering with a strong academic record and active participation in extracurricular activities.'
     },
     {
-      year: 'Sep 2021 - Present',
+      year: 'Sep 2022 - Jun 2026',
       title: 'The Islamia University of Bahawalpur (IUB), Bahawalpur',
       description: 'Pursuing a Bachelor of Science in Computer Science, maintaining a high GPA and engaging in various tech-related projects and activities.'
     }
   ];
 
   return (
-    <div className="min-h-screen text-black dark:text-white font-sans overflow-hidden relative transition-colors duration-300">
+    <div id="about" className="min-h-screen text-black dark:text-white font-sans overflow-hidden relative transition-colors duration-300">
       <div className="container mx-auto px-4 z-10 relative py-20">
         {/* Header */}
         <AnimatedSection className="text-center mb-20 relative" direction="up" delay={0.2}>

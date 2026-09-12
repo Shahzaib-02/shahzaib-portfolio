@@ -290,7 +290,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 text-black dark:bg-theme-dark dark:text-white font-sans overflow-x-hidden overflow-y-hidden relative w-screen left-1/2 -translate-x-1/2 transition-colors duration-300">
+    <div id="home" className="min-h-screen bg-gray-50 text-black dark:bg-theme-dark dark:text-white font-sans overflow-x-hidden overflow-y-hidden relative w-screen left-1/2 -translate-x-1/2 transition-colors duration-300">
       <div className="relative min-h-screen flex items-center">
         {/* Top-left decorative shape */}
         <div className="absolute top-0 left-0 pointer-events-none">
@@ -448,7 +448,7 @@ const Home = () => {
               transition={{ duration: 0.6, delay: 1.2 }}
             >
               <Link
-                to="/about"
+                to="#about"
                 className="group relative inline-flex items-center rounded-full border border-theme-yellow px-8 py-4 pr-16 font-bold uppercase text-sm tracking-wide text-gray-900 dark:text-white hover:bg-theme-yellow hover:text-black transition-colors"
               >
                 <span>More About Me</span>

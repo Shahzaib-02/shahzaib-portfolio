@@ -18,11 +18,25 @@ import Preloader from './components/Preloader';
 const AppContent = () => {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
-
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
+    const timer = setTimeout(() => setIsLoading(false), 2500);
     return () => clearTimeout(timer);
   }, []);
+
+  // Scroll to top when route changes (only for blog post routes)
+  useEffect(() => {
+    if (location.pathname.startsWith('/blog/')) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (location.hash) {
+      // Handle hash navigation for returning to sections
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location.pathname, location.hash]);
 
   return (
     <div className="relative min-h-screen transition-colors duration-500 
@@ -35,56 +49,22 @@ const AppContent = () => {
       <main className="relative min-h-screen w-full mx-auto px-6 lg:px-10 lg:max-w-6xl">
         <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
+            {/* Single page with all sections */}
             <Route
               path="/"
               element={
                 <WipeTransition>
                   <PageTransition>
                     <Home />
-                  </PageTransition>
-                </WipeTransition>
-              }
-            />
-            <Route
-              path="/about"
-              element={
-                <WipeTransition>
-                  <PageTransition>
                     <About />
-                  </PageTransition>
-                </WipeTransition>
-              }
-            />
-            <Route
-              path="/portfolio"
-              element={
-                <WipeTransition>
-                  <PageTransition>
                     <Portfolio />
-                  </PageTransition>
-                </WipeTransition>
-              }
-            />
-            <Route
-              path="/contact"
-              element={
-                <WipeTransition>
-                  <PageTransition>
                     <Contact />
-                  </PageTransition>
-                </WipeTransition>
-              }
-            />
-            <Route
-              path="/blog"
-              element={
-                <WipeTransition>
-                  <PageTransition>
                     <Blog />
                   </PageTransition>
                 </WipeTransition>
               }
             />
+            {/* Blog post routes - separate pages */}
             <Route
               path="/blog/1"
               element={
